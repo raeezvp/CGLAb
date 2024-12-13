@@ -19,7 +19,7 @@ if not exist C:\PROGRAMDATA\R7AgentInstaller4.msi (
 )
 
 REM Check the size of the downloaded file
-for %A in (C:\PROGRAMDATA\R7AgentInstaller4.msi) do set FileSize=%~zA
+for %%A in (C:\PROGRAMDATA\R7AgentInstaller4.msi) do set FileSize=%%~zA
 if %FileSize% lss 56770560 (
     echo "Error: Downloaded file size is less than 54 MB. File size: %FileSize% bytes." >> C:\PROGRAMDATA\R7ScriptLogs.log
 	exit /b 1
