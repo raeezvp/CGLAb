@@ -18,6 +18,14 @@ if not exist C:\PROGRAMDATA\R7AgentInstaller4.msi (
     )
 )
 
+REM Check the size of the downloaded file
+for %A in (C:\PROGRAMDATA\R7AgentInstaller4.msi) do set FileSize=%~zA
+if %FileSize% lss 56770560 (
+    echo "Error: Downloaded file size is less than 54 MB. File size: %FileSize% bytes." >> C:\PROGRAMDATA\R7ScriptLogs.log
+	exit /b 1
+)
+
+
 REM Proceed with uninstallation if the MSI file exists
 if exist C:\PROGRAMDATA\R7AgentInstaller4.msi (
     msiexec /x {59FA94BA-F32D-44DF-B5A2-088EB1F1EE64} /quiet /l*v C:\PROGRAMDATA\insight_agent_Uninstall_log.log
